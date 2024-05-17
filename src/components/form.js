@@ -23,7 +23,7 @@ function Form() {
   useEffect(() => {
     console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-        navigate("/dashboard");
+        navigate("/dashboard",{ state: { username: formValues.username } });
       console.log(formValues);
     }
   }, [formErrors, isSubmit, formValues]);

@@ -1,24 +1,34 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
+import { useLocation } from "react-router-dom";
 let greeting;
-
+const customStyle={
+    color:""
+}
 const date=new Date();
 const currentTime=date.getHours();
 
 if(currentTime<12){
-    greeting="Good Morning"
+    greeting="Good Morning";
+    customStyle.color="red";
+
 }
 else if(currentTime<18){
-    greeting="Good Afternoon"
+    greeting="Good Afternoon";
+    customStyle.color="green";
 }
 else{
-    greeting="Good Night"
+    greeting="Good Night";
+    customStyle.color="blue";
 }
 
 function DashBoard(){
+    const location = useLocation();
+  const { username } = location.state || {};
+
 return(
-    <h1 className="heading">{greeting}</h1>
+    <h1 className="heading" style={customStyle}>{greeting},{username}!
+    </h1>
 )
 }
  
